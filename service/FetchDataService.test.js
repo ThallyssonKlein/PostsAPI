@@ -1,29 +1,26 @@
-jest.mock("../repository/FetchDataRepository.js");
-jest.mock("./FetchDataService.js");
+jest.mock("../repository/FetchDataRepository");
 
 import { fetchByTag } from "../repository/FetchDataRepository.js";
 import { FetchData } from "./FetchDataService.js";
 
-describe("testing FetchDataService", () => {
-    beforeEach(() => {
-        fetchByTag.mockImplementation(() => {
-            return new Promise((resolve, reject) => {
-                resolve({
-                    posts: [
-                        {
-                            name : "a"
-                        },
-                        {
-                            name : "b"
-                        }
-                    ],
-                });
-            });
+fetchByTag.mockImplementation(() => {
+    return new Promise((resolve, reject) => {
+        resolve({
+            posts: [
+                {
+                    name : "a"
+                },
+                {
+                    name : "b"
+                }
+            ],
         });
     });
+});
 
+describe("testing FetchDataService", () => {
     it("should concat two fetched results", async () => {
         const fetchedData = await FetchData("health,tech");
-        expect(fetchedData.posts.length).toBe(4);
+        expect(fetchedData.length).toBe(4);
     });
 });

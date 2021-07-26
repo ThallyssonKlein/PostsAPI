@@ -1,8 +1,6 @@
 import { FetchData } from "../service/FetchDataService.js";
-import { Sort } from "../service/SortService.js";
-import validator from "express-validator";
-
-const validationResult = validator.validationResult;
+import { Sort } from "../utils/SortUtils.js";
+import { validationResult } from "express-validator";
 
 export default async function Posts(req, res) {
     const errors = validationResult(req);

@@ -6,5 +6,5 @@ const API = apisauce.create({
 
 export async function fetchByTag(tag) {
     const apiResponse = await API.get("/assessment/blog/posts", {tag});
-    return apiResponse;
+    return apiResponse.data;
 }

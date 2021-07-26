@@ -1,5 +1,5 @@
 {
-  "name": "api",
+  "name": "PostsAPI",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -30,7 +30,12 @@
     "nodemon": "^2.0.12"
   },
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.14.5",
     "jest": "^27.0.6",
     "supertest": "^6.1.4"
-  }
+  },
+  "engines": {
+    "node": ">=15.0.0"
+  },
+  "engineStrict": true
 }
