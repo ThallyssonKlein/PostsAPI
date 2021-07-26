@@ -17,10 +17,9 @@ export default async function Posts(req, res) {
 
         if(sortBy){
             posts = Sort(posts, sortBy);
-        }
-
-        if(direction === "desc") {
-            posts = posts.reverse();
+            if(direction === "desc") {
+                posts = posts.reverse();
+            }
         }
 
         res.json(posts);

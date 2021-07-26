@@ -24,3 +24,5 @@ app.get("/api/posts", [
 app.listen(port, `0.0.0.0`, () => {
     console.log(`Service initialized on port ${port}`);
 });
+
+export default app;
