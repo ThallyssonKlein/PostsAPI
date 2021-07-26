@@ -1,8 +1,6 @@
 import { FetchData } from "../service/FetchDataService.js";
-import { Sort } from "../service/SortService.js";
-import validator from "express-validator";
-
-const validationResult = validator.validationResult;
+import { Sort } from "../utils/SortUtils.js";
+import { validationResult } from "express-validator";
 
 export default async function Posts(req, res) {
     const errors = validationResult(req);
@@ -17,10 +15,9 @@ export default async function Posts(req, res) {
 
         if(sortBy){
             posts = Sort(posts, sortBy);
-        }
-
-        if(direction === "desc") {
-            posts = posts.reverse();
+            if(direction === "desc") {
+                posts = posts.reverse();
+            }
         }
 
         res.json(posts);
