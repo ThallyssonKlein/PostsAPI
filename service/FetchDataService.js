@@ -1,16 +1,12 @@
-import apisauce from "apisauce";
-
-const API = apisauce.create({
-    baseURL: "https://api.hatchways.io"
-});
+import { fetchByTag } from "../repository/FetchDataRepository.js";
 
 export async function FetchData(tags){
     let posts = [];
 
     for(let tag of tags.split(",")){
-        const apiResponse = await API.get("/assessment/blog/posts", {tag});
-        if(apiResponse.data){
-            posts = posts.concat(apiResponse.data.posts);
+        const apiResponse = await fetchByTag(tag);
+        if(apiResponse){
+            posts = posts.concat(apiResponse.posts);
         }
     }
 
